@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>    
+    <id>shoppy</id>
+    <version>0.0.0.2</version>
+    <title>Shoppy.NET</title>
+    <authors>iLinked</authors>
+    <owners>iLinked</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<releaseNotes>Got rid of the warnings n' shit</releaseNotes>
+    <description>Shoppy.NET is a wrapper for Shoppy's API</description>
+    <copyright>Copyright ©iLinked 2020</copyright>
+    <tags>shoppy</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="12.0.3"  />
+    </dependencies>
+    <summary>Shoppy.NET is a wrapper for Shoppy's API</summary>
+  </metadata>
+</package>
