@@ -5,7 +5,7 @@ namespace Shoppy
     public class ShoppySettingsContainer
     {
         [JsonProperty("user")]
-        public ShoppyUser User { get; private set; }
+        public ShoppyUserSettings User { get; private set; }
 
         
         [JsonProperty("settings")]

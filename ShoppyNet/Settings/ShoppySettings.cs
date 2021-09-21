@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shoppy
 {
@@ -115,7 +110,7 @@ namespace Shoppy
 
 
         [JsonProperty("userAvatar")]
-        private readonly string _userAvatar;
+        public string Avatar { get; set; }
 
 
         [JsonProperty("useTwoFactorAuthentication")]
@@ -123,7 +118,7 @@ namespace Shoppy
 
 
         [JsonProperty("webhookSecret")]
-        private readonly string _hookSecret;
+        public string WebhookSecret { get; set; }
 #pragma warning restore 
     }
 }

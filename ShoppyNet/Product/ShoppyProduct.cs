@@ -42,7 +42,7 @@ namespace Shoppy
 
 
         [JsonProperty("price")]
-        public decimal Price { get; private set; }
+        public double Price { get; private set; }
 
 
         [JsonProperty("currency")]
@@ -58,7 +58,7 @@ namespace Shoppy
 
 
         [JsonProperty("quantity")]
-        public ShoppyQuantityInformation Quantity { get; private set; }
+        public ShoppyQuantity Quantity { get; private set; }
 
 
         [JsonProperty("webhook_urls")]

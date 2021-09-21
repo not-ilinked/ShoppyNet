@@ -28,7 +28,7 @@ namespace Shoppy
 
 
         [JsonProperty("price")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
 
         private readonly OptionalParameter<bool> _unlistedParam = new OptionalParameter<bool>();
@@ -98,9 +98,9 @@ namespace Shoppy
         }
 
 
-        private readonly OptionalParameter<ProductQuantity> _quantityParam = new OptionalParameter<ProductQuantity>();
+        private readonly OptionalParameter<ShoppyQuantity> _quantityParam = new OptionalParameter<ShoppyQuantity>();
         [JsonProperty("quantity")]
-        public ProductQuantity Quantity
+        public ShoppyQuantity Quantity
         {
             get { return _quantityParam.Value; }
             set { _quantityParam.Value = value; }

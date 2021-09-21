@@ -2,7 +2,7 @@
 
 namespace Shoppy
 {
-    public class ShoppyUser
+    public class ShoppyUserSettings
     {
         [JsonProperty("username")]
         public string Username { get; set; }

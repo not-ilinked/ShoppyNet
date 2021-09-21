@@ -10,7 +10,7 @@ namespace Shoppy
 
 
         [JsonProperty("price")]
-        public decimal Price { get; private set; }
+        public double Price { get; private set; }
 
 
         [JsonProperty("currency")]

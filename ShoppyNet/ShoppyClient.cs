@@ -29,8 +29,14 @@ namespace Shoppy
     {
         private readonly HttpClient _client;
 
+        public string Token { get; private set; }
+        public ShoppyUserSettings User { get; private set; }
+        public ShoppySettings Settings { get; private set; }
+
         public ShoppyClient(string authToken)
         {
+            Token = authToken;
+
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add("Authorization", authToken);
             _client.DefaultRequestHeaders.Add("User-Agent", "Shoppy.NET");
@@ -48,6 +54,10 @@ namespace Shoppy
 
                     continue;
                 }
+                else if (resp.StatusCode == HttpStatusCode.Unauthorized)
+                    throw new ShoppyTokenException();
+                else if (resp.StatusCode >= HttpStatusCode.BadRequest)
+                    throw new ShoppyException(resp.StatusCode, resp.ReasonPhrase);
 
                 return new ParsedResponse(resp);
             }
@@ -102,20 +112,17 @@ namespace Shoppy
             return MakeRequest("GET", "/feedbacks/" + id).Body.ToObject<ShoppyFeedback>();
         }
 
-
         public ShoppySettingsContainer GetSettings()
         {
-            return MakeRequest("GET", "/settings").Body.ToObject<ShoppySettingsContainer>();
+            var acc = MakeRequest("GET", "/settings").Body.ToObject<ShoppySettingsContainer>();
+            User = acc.User;
+            Settings = acc.Settings;
+            return acc;
         }
 
         public void ChangeSettings(ShoppySettings settings)
         {
-            JObject obj = new JObject
-            {
-                ["settings"] = JObject.FromObject(settings)
-            };
-
-            MakeRequest("POST", "/settings", obj);
+            MakeRequest("POST", "/settings", new { settings });
         }
 
         public ShoppyPayResponse Pay(ShoppyProductUpdate options)
